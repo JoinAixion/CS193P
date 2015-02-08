@@ -1,1 +1,85 @@
+The MIT License (MIT) 
+
+Copyright (c) 2015 JoinAixion 
+
+
+Card.h  /*Card class public interface*/
+
+#import <Foundation/foundation.h> /*Precompiled Foundation  */
+
+@interface Card : NSObject  /*This is the object name, inherited from NSObject*/
+
+@property (strong, nonatomic) NSString *contents;   /*This is a pointer of type NSString,Pointer name is called contents,*/
+                                                    /*Card must have contents, so they need a "strong" reference*/
+                                                    /*point to the object named _contents*/
+
+@property (nonatomic) BOOL chosen;                  /*The basic types of value in the C language,Does not require strong references*/
+
+@property (nonatomic) BOOL mached;
+
+- (init)match:(NSArray *)otherCards;
+
+@end
+
+
+Card.m  /*Implementation it*/
+
+#import "Card.h"   /*Precompiled  */
+
+@interface Card() 
+@end
+
+@implenment Card   /*Private Interface*/
+
+@synthesize chosen = _chosen;                     /*To use this instance name is" _chosen"*/
+
+@synthesize mached = _mached;                     /*To use this instance name is" _mached"*/
+
+@synthesize contents = _contents;                 /*To use this instance name is" _content"*/
+
+- (NSString *)contents                            /*  getter ,Gets the instance ...*/
+{
+     return _contents;
+}
+- (viod)setContents:(NSString *)contents          /*setter  ,set value... "setContent"---"C" is Uppercase letter*/
+{
+         _contents = content;
+}
+
+- (BOOL)chosen
+{
+   return  _chosen;
+}
+- (void)setChosen:(BOOL)chosen
+{
+_chosen = chosen;
+}
+
+- (BOOL)mached
+{
+   return  _mached;
+}
+- (void)setMached:(BOOL)mached
+{
+_mached = mached;
+}
+
+- (init)match:(NSArray *)otherCards               
+{
+    int score = 0;
+    
+    for (Card *card in otherCards)      /*every otherCards 's object "card" */
+      {                                          
+      if {[card.contents isEqualToString:self.contents]}  /*slef.contents is you wang to mach card'content */
+                                                          /*card.contents is theotherCards 's object "card"*/
+          {
+            score = 1;
+          }
+      }
+   return score;
+}
+
+@end
+
+ 
 
