@@ -4,10 +4,10 @@ Copyright (c) 2015 JoinAixion
 
 
 Card.h  /*Card class public interface*/
+bject
+#import <Foundation/foundation.h>                  //预编译
 
-#import <Foundation/foundation.h> /*Precompiled Foundation  */
-
-@interface Card : NSObject  /*This is the object name, inherited from NSObject*/
+@interface Card : NSObject                         //继承自根类NSObject 
 
 @property (strong, nonatomic) NSString *contents;   /*This is a pointer of type NSString,Pointer name is called contents,*/
                                                     /*Card must have contents, so they need a "strong" reference*/
@@ -68,7 +68,7 @@ _mached = mached;
 {
     int score = 0;
     
-    for (Card *card in otherCards)      /*every otherCards 's object "card" */
+    for (Card *card in otherCards)                     //for循环
       {                                          
       if {[card.contents isEqualToString:self.contents]}  /*slef.contents is you wang to mach card'content */
                                                           /*card.contents is theotherCards 's object "card"*/
