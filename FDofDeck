@@ -1,0 +1,70 @@
+The MIT License (MIT)  
+
+Copyright (c) 2015 JoinAixion  
+
+_________________________________________________________________________________________
+
+Deck.h
+-----------------------------------------------------------------------------------------
+
+#import <foundation/foundation.h>
+#import "Card.h"
+
+@interface Deck ： NSObject
+
+- (void)addCard:(Card *)card atTop:(BOOL)atTop;
+- (void)addCard:(Card *)card;
+
+- (Card *)drawrandomCard;
+
+@end
+------------------------------------------------------------------------------------------
+__________________________________________________________________________________________
+
+Deck.m
+------------------------------------------------------------------------------------------
+#import "Deck.h"
+
+@interface Deck()                                            /*------------------私有接口---------------------*/
+@property (strong,nonatomic) NSMutableArray *cards;          /*数组里面的对象都是一个个Card的实例*/
+@end
+
+@implemention Deck
+
+- (NSMutableArray *)cards                                   //惰性实例化数组
+{
+      if (!_cards) _cards = [[NSMutableArray allco] init]  //在返回（return）实例变量（instance var）之前先检查_cards数组是否为空
+      return _cards;                                       //如果为空（!_cards ，非_cards就是nil的意思，然后allocate一个对象
+}                                                          //lib 48-51
+- (void)addCard:(Card *)card atTop:(BOOL)atTop            //方法名字是addCard： atTop：
+{
+      if （atTop） 
+      {
+         [self.cards insertObject:card atIndex:0];
+      }
+      else
+      {  
+         [self.cards addObject:card];
+      }
+}      
+
+- (void)addCard:(Card *)card                               //方法名字是addCard：
+{
+        [self addCard:card atTop:NO];                     //一个self即调用Deck类自身的方法addCard： atTop：
+
+}
+
+- (Card *)drawrandomCard
+{
+       Card *randomCard = nil;                             //先置空
+       if ([self.cards count])                             //count是计算数组中的单元数目或对象中的属性个数就是if（x=一个数），就是有x个对象的意思
+       {
+       unsigned index = arc4random() % [self.card count];  //通过arc4random() 获取0到x-1的整数的代码:int value = arc4random() % x,还有另外三种，自己百度
+       randomCard = self.cards[index];                     //数组格式，A(i),线性代数里面很常见的
+       [self.cards removeObjectAtindex:index];             //Array的默认方法removeObjectAtindex:index，移除对象
+       }
+       return randomCard;
+}
+
+@end
+-------------------------------------------------------------------------
