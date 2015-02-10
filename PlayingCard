@@ -1,0 +1,32 @@
+—————————————————————————————————————————————————————————————————————————————————————————
+PlayingCard.h
+-----------------------------------------------------------------------------------------
+#import  "Card.h"
+@interface PlayingCard : Card
+
+@property (strong,nonatomic) NSString *suit;
+@property (strong,nonatomic) NSUIntger rank;
+
+@end
+________________________________________________________________
+PlayingCard.m
+-------------------------------------------------------------------------------------------
+#import “PlayingCard.h"
+@implemention PlayingCard
+- (NSString *)contents
+｛
+      NSArray *rankStrings = @[@"?",@"A",@"2",@"3",....,@"J",@"Q",@"K"];
+      return [NSString stringWithFormat:@"%d%@",self.rank,self.suit]; 
+｝
+
+- (void)setSuit:(NSString *)suit
+{
+      if(....)    _suit = suit
+}
+- (NSString *)suit
+{
+    return _suit ? _suit:@"?";
+}
+@end
+----------------------------------------------------------
+------------------------------------------------------------
